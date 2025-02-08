@@ -3,15 +3,16 @@ const path = require('path');
 
 const app = express();
 
-// Servir archivos estáticos desde "public"
+// Servir todos los archivos dentro de la carpeta "public"
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Manejar rutas desconocidas (opcional, solo si tienes un index.html principal)
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'core/scripts/dashboard.html'));
+// Ruta principal (redirige a dashboard.html)
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/core/dashboard.html'));
 });
 
+// Iniciar servidor
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
+  console.log(Servidor corriendo en http://localhost:${PORT});
 });
